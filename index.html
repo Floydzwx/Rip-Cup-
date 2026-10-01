@@ -795,7 +795,7 @@
 
   /* 排行榜 / 摄影师 / 裁判：单卡视窗，自动向左滑，各自独立计时，同时启动
      支持左右按钮：上一张 / 下一张（循环）。
-     使用 scroll-snap 原生对齐，彻底消除像素偏移。 */
+     使用百分比平移（translateX -100% = 一张卡宽），零亚像素误差。 */
   (function () {
     var INTERVAL = 2500;
     var DURATION = 600;
@@ -822,20 +822,16 @@
       var timer = null;
       var animating = false;
 
-      function stepWidth() {
-        var card = track.children[0];
-        return card ? card.offsetWidth : carousel.clientWidth;
-      }
-
       function goTo(i, animate) {
         index = i;
-        var target = index * stepWidth();
         if (animate) {
           track.style.transition = 'transform ' + (DURATION / 1000) + 's ease';
         } else {
           track.style.transition = 'none';
         }
-        track.style.transform = 'translateX(' + (-target) + 'px)';
+        // 用百分比平移：-100% 精确等于一张卡片宽度（卡片 flex-basis 100% = track 宽度），
+        // 彻底消除像素测量的亚像素累积误差
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
       }
 
       function autoNext() {
