@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="撕界杯 Rip Cup · 朋友之间的撕名牌大赛官方资讯站，含精彩回放、比赛对阵、四强榜单与历届回顾。">
 <title>撕界杯 Rip Cup</title>
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -39,29 +40,32 @@
     <span class="line"></span>
   </div>
   <div class="video-grid">
-    <div class="video-card">
+    <div class="video-card reveal">
       <div class="video-embed">
-        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117329866263259&bvid=BV1siau6HEdG&cid=42183034042&p=1&danmaku=0&autoplay=0"
-                allowfullscreen="true"
-                title="第二届撕界杯第一轮决赛"></iframe>
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117329866263259&bvid=BV1siau6HEdG&cid=42183034042&p=1&danmaku=0&autoplay=1" data-title="第二届撕界杯第一轮决赛" role="button" tabindex="0" aria-label="播放：第二届撕界杯第一轮决赛">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
       </div>
       <h3>第二届撕界杯第一轮决赛</h3>
       <p>第二届撕界杯决赛精彩回放</p>
     </div>
-    <div class="video-card">
+    <div class="video-card reveal">
       <div class="video-embed">
-        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117329748889066&bvid=BV1Utau6oEB3&cid=42182968061&p=1&danmaku=0&autoplay=0"
-                allowfullscreen="true"
-                title="第二届撕界杯第一轮决赛 视角Ⅱ"></iframe>
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117329748889066&bvid=BV1Utau6oEB3&cid=42182968061&p=1&danmaku=0&autoplay=1" data-title="第二届撕界杯第一轮决赛 视角Ⅱ" role="button" tabindex="0" aria-label="播放：第二届撕界杯第一轮决赛 视角Ⅱ">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
       </div>
       <h3>第二届撕界杯第一轮决赛 视角Ⅱ</h3>
       <p>第二届撕界杯正式开赛，究竟鹿死谁手</p>
     </div>
-    <div class="video-card">
+    <div class="video-card reveal">
       <div class="video-embed">
-        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117329413343625&bvid=BV1efau6iEvE&cid=42181133022&p=1&danmaku=0&autoplay=0"
-                allowfullscreen="true"
-                title="第二届撕界杯幕后花絮"></iframe>
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117329413343625&bvid=BV1efau6iEvE&cid=42181133022&p=1&danmaku=0&autoplay=1" data-title="第二届撕界杯幕后花絮" role="button" tabindex="0" aria-label="播放：第二届撕界杯幕后花絮">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
       </div>
       <h3>第二届撕界杯幕后花絮</h3>
       <p>全场最佳后勤</p>
@@ -76,12 +80,158 @@
       <h2>比赛</h2>
       <span class="line"></span>
     </div>
-    <div class="match-list">
 
-      <div class="match-row">
+    <!-- 十六强树状对战图 -->
+    <div class="bracket reveal">
+      <div class="bracket-title">
+        <h3>十六强淘汰赛对阵</h3>
+        <span class="bracket-legend"><i class="seed-dot"></i>种子选手直进八强</span>
+      </div>
+
+      <div class="bracket-wrap">
+
+        <!-- 资格赛（十二进八）：8 人争 4 个八强席位 -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">资格赛 · 12进8</div>
+          <div class="bracket-matches">
+            <div class="bracket-match">
+              <div class="bracket-team win">谢沛尧</div>
+              <div class="bracket-team">董浩林</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team">陈律行</div>
+              <div class="bracket-team win">王智宸</div>
+              <div class="bracket-score">0 : 1</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team win">洪昊阳</div>
+              <div class="bracket-team">毕文豪</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team">万雪麟</div>
+              <div class="bracket-team win">周行健</div>
+              <div class="bracket-score">0 : 1</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1/4 决赛（八进四）：4 种子 + 4 资格赛胜者 -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">1/4决赛 · 8进4</div>
+          <div class="bracket-matches">
+            <div class="bracket-match">
+              <div class="bracket-team seed win">陆骁睿 <span class="seed-tag">种子</span></div>
+              <div class="bracket-team">谢沛尧</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team seed win">程孝 <span class="seed-tag">种子</span></div>
+              <div class="bracket-team">王智宸</div>
+              <div class="bracket-score">1.5 : 0.5</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team seed win">龚雨晨 <span class="seed-tag">种子</span></div>
+              <div class="bracket-team">洪昊阳</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team seed">胡晨翔 <span class="seed-tag">种子</span></div>
+              <div class="bracket-team win">周行健</div>
+              <div class="bracket-score">0 : 1</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 半决赛（四进二） -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">半决赛 · 4进2</div>
+          <div class="bracket-matches">
+            <div class="bracket-match">
+              <div class="bracket-team win">陆骁睿</div>
+              <div class="bracket-team">程孝</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team win">龚雨晨</div>
+              <div class="bracket-team">周行健</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 决赛 -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">决赛</div>
+          <div class="bracket-matches">
+            <div class="bracket-match champion-match">
+              <div class="bracket-team win">陆骁睿</div>
+              <div class="bracket-team">龚雨晨</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 冠军 -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">冠军</div>
+          <div class="bracket-champion">
+            <div class="bracket-champion-crown">🏆</div>
+            <div class="bracket-champion-name">陆骁睿</div>
+            <div class="bracket-champion-sub">卫冕冠军</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 比赛分析（位于树状图与赛程列表之间） -->
+    <div class="analysis-block">
+      <div class="section-head">
+        <h2>比赛分析</h2>
+        <span class="line"></span>
+      </div>
+      <div class="video-grid">
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <div class="video-lazy" data-local-src="movies/final.mp4" data-title="决赛" role="button" tabindex="0" aria-label="播放：决赛">
+              <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="hint">点击播放</span>
+            </div>
+          </div>
+          <h3>决赛</h3>
+          <p>陆骁睿 VS 龚雨晨</p>
+        </div>
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <div class="video-lazy" data-local-src="movies/semifinal1.mp4" data-title="半决赛" role="button" tabindex="0" aria-label="播放：半决赛">
+              <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="hint">点击播放</span>
+            </div>
+          </div>
+          <h3>半决赛</h3>
+          <p>陆骁睿 VS 程孝</p>
+        </div>
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <div class="video-lazy" data-local-src="movies/semifinal2.mp4" data-title="半决赛" role="button" tabindex="0" aria-label="播放：半决赛">
+              <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="hint">点击播放</span>
+            </div>
+          </div>
+          <h3>半决赛</h3>
+          <p>龚雨晨 VS 周行健</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="match-list reveal">
+
+      <div class="match-row final">
         <span class="match-round">决赛</span>
         <span class="match-teams">陆骁睿 VS 龚雨晨</span>
-        <span class="match-score">1 : 0</span>
+        <span class="match-score"><span class="win">1</span> : 0</span>
         <span class="match-status done">已结束</span>
       </div>
 
@@ -166,33 +316,33 @@
     <span class="line"></span>
   </div>
   <div class="player-grid">
-    <div class="player-card">
+    <div class="player-card reveal">
       <div class="avatar">
-        <img src="images/champion.jpg" alt="陆骁睿"
+        <img loading="lazy" decoding="async" src="images/champion.jpg" alt="陆骁睿"
              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>陆</text></svg>'">
       </div>
       <h3>陆骁睿</h3>
       <p>卫冕冠军</p>
     </div>
-    <div class="player-card">
+    <div class="player-card reveal">
       <div class="avatar">
-        <img src="images/runner-up.jpg" alt="龚雨晨"
+        <img loading="lazy" decoding="async" src="images/runner-up.jpg" alt="龚雨晨"
              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>龚</text></svg>'">
       </div>
       <h3>龚雨晨</h3>
       <p>亚军</p>
     </div>
-    <div class="player-card">
+    <div class="player-card reveal">
       <div class="avatar">
-        <img src="images/semi-finalist.jpg" alt="程孝"
+        <img loading="lazy" decoding="async" src="images/semi-finalist.jpg" alt="程孝"
              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>程</text></svg>'">
       </div>
       <h3>程孝</h3>
       <p>四强</p>
     </div>
-    <div class="player-card">
+    <div class="player-card reveal">
       <div class="avatar">
-        <img src="images/dark-horse.jpg" alt="周行健"
+        <img loading="lazy" decoding="async" src="images/dark-horse.jpg" alt="周行健"
              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>周</text></svg>'">
       </div>
       <h3>周行健</h3>
@@ -212,7 +362,7 @@
     <div class="honor-row">
 
       <!-- 冠军（不滑动，上文字下图） -->
-      <div class="honor-col">
+      <div class="honor-col reveal">
         <h3 class="honor-title">冠军</h3>
         <div class="champion-card">
           <div class="champion-info">
@@ -221,14 +371,14 @@
             <p class="champion-title">当届冠军</p>
           </div>
           <div class="champion-photo">
-            <img src="images/champion.jpg" alt="陆骁睿"
+            <img loading="lazy" decoding="async" src="images/champion.jpg" alt="陆骁睿"
                  onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23c9a227%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23fff%22 text-anchor=%22middle%22>陆</text></svg>'">
           </div>
         </div>
       </div>
 
       <!-- 排行榜（单卡视窗，自动向左滑，18 人） -->
-      <div class="honor-col">
+      <div class="honor-col reveal">
         <h3 class="honor-title">排行榜</h3>
         <div class="honor-carousel" data-carousel>
           <button class="honor-nav prev" type="button" aria-label="上一张">&#8249;</button>
@@ -236,7 +386,7 @@
           <div class="honor-track">
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/1st.jpg" alt="陆骁睿"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/1st.jpg" alt="陆骁睿"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>1</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -246,7 +396,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/2nd.jpg" alt="田扶"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/2nd.jpg" alt="田扶"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>2</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="日本"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#bc002d"/></svg>
@@ -256,7 +406,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/3rd.jpg" alt="龚雨晨"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/3rd.jpg" alt="龚雨晨"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>3</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -266,7 +416,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/4th.jpg" alt="周行健"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/4th.jpg" alt="周行健"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>4</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -276,7 +426,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/5th.jpg" alt="胡晨翔"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/5th.jpg" alt="胡晨翔"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>5</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -286,7 +436,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/6th.jpg" alt="孙嘉珉"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/6th.jpg" alt="孙嘉珉"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>6</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -296,7 +446,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/7th.jpg" alt="程孝"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/7th.jpg" alt="程孝"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>7</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -306,7 +456,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/8th.jpg" alt="王智宸"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/8th.jpg" alt="王智宸"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>8</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -316,7 +466,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/9th.jpg" alt="谢沛尧"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/9th.jpg" alt="谢沛尧"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>9</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -326,7 +476,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/10th.jpg" alt="陈律行"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/10th.jpg" alt="陈律行"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>10</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -336,7 +486,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/11th.jpg" alt="谢昊东"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/11th.jpg" alt="谢昊东"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>11</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -346,7 +496,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/12th.jpg" alt="洪昊阳"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/12th.jpg" alt="洪昊阳"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>12</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -356,7 +506,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/13th.jpg" alt="董浩林"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/13th.jpg" alt="董浩林"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>13</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -366,7 +516,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/14th.jpg" alt="万雪麟"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/14th.jpg" alt="万雪麟"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>14</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -376,7 +526,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/15th.jpg" alt="朱晨曦"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/15th.jpg" alt="朱晨曦"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>15</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -386,7 +536,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/16th.jpg" alt="周文轩"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/16th.jpg" alt="周文轩"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>16</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="美国"><rect width="30" height="20" fill="#fff"/><g fill="#b22234"><rect width="30" height="1.54" y="0"/><rect width="30" height="1.54" y="3.08"/><rect width="30" height="1.54" y="6.16"/><rect width="30" height="1.54" y="9.24"/><rect width="30" height="1.54" y="12.32"/><rect width="30" height="1.54" y="15.4"/><rect width="30" height="1.54" y="18.48"/></g><rect width="12" height="10.8" fill="#3c3b6e"/></svg>
@@ -396,7 +546,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/17th.jpg" alt="陈子谦"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/17th.jpg" alt="陈子谦"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>17</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -406,7 +556,7 @@
             </div>
 
             <div class="honor-card">
-              <img class="honor-photo" src="images/18th.jpg" alt="陈旭"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/18th.jpg" alt="陈旭"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>18</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -420,14 +570,14 @@
       </div>
 
       <!-- 摄影师（整图铺满，自动向左滑） -->
-      <div class="honor-col">
+      <div class="honor-col reveal">
         <h3 class="honor-title">摄影师</h3>
         <div class="honor-carousel" data-carousel>
           <button class="honor-nav prev" type="button" aria-label="上一张">&#8249;</button>
           <button class="honor-nav next" type="button" aria-label="下一张">&#8250;</button>
           <div class="honor-track">
             <div class="honor-card">
-              <img class="honor-photo" src="images/Photographer1.jpg" alt="盛彦博"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/Photographer1.jpg" alt="盛彦博"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>摄</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="苏联">
@@ -444,7 +594,7 @@
               </div>
             </div>
             <div class="honor-card">
-              <img class="honor-photo" src="images/Photographer2.jpg" alt="崔可豪"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/Photographer2.jpg" alt="崔可豪"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>摄</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -457,14 +607,14 @@
       </div>
 
       <!-- 裁判（整图铺满，自动向左滑） -->
-      <div class="honor-col">
+      <div class="honor-col reveal">
         <h3 class="honor-title">裁判</h3>
         <div class="honor-carousel" data-carousel>
           <button class="honor-nav prev" type="button" aria-label="上一张">&#8249;</button>
           <button class="honor-nav next" type="button" aria-label="下一张">&#8250;</button>
           <div class="honor-track">
             <div class="honor-card">
-              <img class="honor-photo" src="images/referee1.jpg" alt="施子言"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/referee1.jpg" alt="施子言"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>裁</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
@@ -473,7 +623,7 @@
               </div>
             </div>
             <div class="honor-card">
-              <img class="honor-photo" src="images/referee2.jpg" alt="周文轩"
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/referee2.jpg" alt="周文轩"
                    onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>裁</text></svg>'">
               <div class="honor-meta">
                 <svg class="honor-flag" viewBox="0 0 30 20" aria-label="美国"><rect width="30" height="20" fill="#fff"/><g fill="#b22234"><rect width="30" height="1.54" y="0"/><rect width="30" height="1.54" y="3.08"/><rect width="30" height="1.54" y="6.16"/><rect width="30" height="1.54" y="9.24"/><rect width="30" height="1.54" y="12.32"/><rect width="30" height="1.54" y="15.4"/><rect width="30" height="1.54" y="18.48"/></g><rect width="12" height="10.8" fill="#3c3b6e"/></svg>
@@ -496,29 +646,32 @@
     <span class="line"></span>
   </div>
   <div class="video-grid">
-    <div class="video-card">
+    <div class="video-card reveal">
       <div class="video-embed">
-        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117190850317804&bvid=BV1exta6XEcD&cid=41470528608&p=1&danmaku=0&autoplay=0"
-                allowfullscreen="true"
-                title="第一届撕界杯团战"></iframe>
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117190850317804&bvid=BV1exta6XEcD&cid=41470528608&p=1&danmaku=0&autoplay=1" data-title="第一届撕界杯团战" role="button" tabindex="0" aria-label="播放：第一届撕界杯团战">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
       </div>
       <h3>第一届撕界杯团战</h3>
       <p>5V5综合评价</p>
     </div>
-    <div class="video-card">
+    <div class="video-card reveal">
       <div class="video-embed">
-        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117184474909332&bvid=BV15KtH6dENN&cid=41432714870&p=1&danmaku=0&autoplay=0"
-                allowfullscreen="true"
-                title="第一届决赛集锦"></iframe>
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117184474909332&bvid=BV15KtH6dENN&cid=41432714870&p=1&danmaku=0&autoplay=1" data-title="第一届决赛集锦" role="button" tabindex="0" aria-label="播放：第一届决赛集锦">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
       </div>
       <h3>第一届决赛集锦</h3>
       <p>首届决赛精彩时刻</p>
     </div>
-    <div class="video-card">
+    <div class="video-card reveal">
       <div class="video-embed">
-        <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117184542084011&bvid=BV1qctH6FEhq&cid=41433237000&p=1&danmaku=0&autoplay=0"
-                allowfullscreen="true"
-                title="第一届撕界杯第三轮"></iframe>
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117184542084011&bvid=BV1qctH6FEhq&cid=41433237000&p=1&danmaku=0&autoplay=1" data-title="第一届撕界杯第三轮" role="button" tabindex="0" aria-label="播放：第一届撕界杯第三轮">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
       </div>
       <h3>第一届撕界杯第三轮</h3>
       <p>3V4混战</p>
@@ -533,7 +686,7 @@
       <h2>捐赠</h2>
       <span class="line"></span>
     </div>
-    <div class="donate-box">
+    <div class="donate-box reveal">
       <p>撕界杯纯属朋友之间娱乐，你的支持会让下一届更精彩。</p>
       <a href="https://space.bilibili.com/3546856434960768?spm_id_from=333.1387.0.0"
          target="_blank" rel="noopener" class="donate-btn">支持我们</a>
@@ -547,13 +700,20 @@
 </footer>
 
 <script>
+  /* ===== 导航：滚动高亮 + 顶栏阴影 ===== */
   (function () {
+    var header = document.querySelector('.site-header');
     var links = document.querySelectorAll('.main-nav a');
     var sections = [];
     links.forEach(function (a) {
       var el = document.querySelector(a.getAttribute('href'));
       if (el) sections.push(el);
     });
+
+    function onScroll() {
+      if (header) header.classList.toggle('scrolled', window.scrollY > 10);
+      updateActive();
+    }
 
     function updateActive() {
       if (!sections.length) return;
@@ -568,13 +728,74 @@
       });
     }
 
-    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', updateActive);
-    updateActive();
+    onScroll();
+  })();
+
+  /* ===== 卡片入场动画（IntersectionObserver）===== */
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  /* ===== 视频懒加载：点击后才加载 ===== */
+  (function () {
+    var lazies = document.querySelectorAll('.video-lazy');
+    function activate(el) {
+      var parent = el.parentNode;
+      var title = el.getAttribute('data-title') || '';
+
+      // 本地视频：创建 video 并自动播放
+      var localSrc = el.getAttribute('data-local-src');
+      if (localSrc) {
+        var video = document.createElement('video');
+        video.src = localSrc;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.className = 'video-local';
+        video.title = title;
+        parent.replaceChild(video, el);
+        var p = video.play();
+        if (p && p.catch) { p.catch(function () {}); }
+        return;
+      }
+
+      // B 站视频：创建 iframe
+      var src = el.getAttribute('data-src');
+      if (!src) return;
+      var iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.allowFullscreen = true;
+      iframe.title = title;
+      iframe.setAttribute('allow', 'fullscreen');
+      parent.replaceChild(iframe, el);
+    }
+    lazies.forEach(function (el) {
+      function onClick() { activate(el); }
+      el.addEventListener('click', onClick);
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(el); }
+      });
+    });
   })();
 
   /* 排行榜 / 摄影师 / 裁判：单卡视窗，自动向左滑，各自独立计时，同时启动
-     支持左右按钮：上一张 / 下一张（循环） */
+     支持左右按钮：上一张 / 下一张（循环）。
+     使用 scroll-snap 原生对齐，彻底消除像素偏移。 */
   (function () {
     var INTERVAL = 2500;
     var DURATION = 600;
@@ -591,72 +812,67 @@
       var originalCards = Array.prototype.slice.call(track.children);
       if (originalCards.length < 2) return;
 
+      // 克隆一份，实现无缝循环
       originalCards.forEach(function (card) {
         track.appendChild(card.cloneNode(true));
       });
 
       var originalCount = originalCards.length;
       var index = 0;
-      var step = 0;
       var timer = null;
       var animating = false;
 
-      function measure() {
-        step = carousel.clientWidth;
+      function stepWidth() {
+        var card = track.children[0];
+        return card ? card.offsetWidth : carousel.clientWidth;
       }
 
-      function jumpTo(i) {
+      function goTo(i, animate) {
         index = i;
-        track.style.transition = 'none';
-        track.style.transform = 'translateX(' + (-index * step) + 'px)';
-      }
-
-      function slideTo(i) {
-        index = i;
-        track.style.transition = 'transform ' + (DURATION / 1000) + 's ease';
-        track.style.transform = 'translateX(' + (-index * step) + 'px)';
+        var target = index * stepWidth();
+        if (animate) {
+          track.style.transition = 'transform ' + (DURATION / 1000) + 's ease';
+        } else {
+          track.style.transition = 'none';
+        }
+        track.style.transform = 'translateX(' + (-target) + 'px)';
       }
 
       function autoNext() {
-        if (!step || animating) return;
+        if (animating) return;
         animating = true;
-        slideTo(index + 1);
-        if (index >= originalCount) {
-          setTimeout(function () {
-            jumpTo(0);
-            animating = false;
-          }, DURATION + 20);
-        } else {
-          setTimeout(function () { animating = false; }, DURATION + 20);
-        }
+        goTo(index + 1, true);
+        setTimeout(function () {
+          if (index >= originalCount) {
+            goTo(0, false);
+          }
+          animating = false;
+        }, DURATION + 30);
       }
 
       function manualNext() {
-        if (!step || animating) return;
+        if (animating) return;
         animating = true;
-        slideTo(index + 1);
-        if (index >= originalCount) {
-          setTimeout(function () {
-            jumpTo(0);
-            animating = false;
-          }, DURATION + 20);
-        } else {
-          setTimeout(function () { animating = false; }, DURATION + 20);
-        }
+        goTo(index + 1, true);
+        setTimeout(function () {
+          if (index >= originalCount) {
+            goTo(0, false);
+          }
+          animating = false;
+        }, DURATION + 30);
       }
 
       function manualPrev() {
-        if (!step || animating) return;
+        if (animating) return;
         animating = true;
         if (index === 0) {
-          jumpTo(originalCount);
+          goTo(originalCount, false);
           void track.offsetWidth;
-          slideTo(originalCount - 1);
-          setTimeout(function () { animating = false; }, DURATION + 20);
+          goTo(originalCount - 1, true);
         } else {
-          slideTo(index - 1);
-          setTimeout(function () { animating = false; }, DURATION + 20);
+          goTo(index - 1, true);
         }
+        setTimeout(function () { animating = false; }, DURATION + 30);
       }
 
       function start() {
@@ -668,49 +884,54 @@
         if (timer) { clearInterval(timer); timer = null; }
       }
 
-      function restart() {
-        stop();
-        start();
-      }
-
       if (prevBtn) {
-        prevBtn.addEventListener('click', function () {
-          manualPrev();
-          restart();
-        });
+        prevBtn.addEventListener('click', function () { manualPrev(); });
       }
       if (nextBtn) {
-        nextBtn.addEventListener('click', function () {
-          manualNext();
-          restart();
-        });
+        nextBtn.addEventListener('click', function () { manualNext(); });
       }
 
       carousel.addEventListener('mouseenter', stop);
       carousel.addEventListener('mouseleave', start);
 
+      /* 触摸滑动支持（手机端） */
+      var touchX = 0, touchY = 0, touched = false;
+      carousel.addEventListener('touchstart', function (e) {
+        touched = true;
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+        stop();
+      }, { passive: true });
+      carousel.addEventListener('touchend', function (e) {
+        if (!touched) return;
+        touched = false;
+        var dx = e.changedTouches[0].clientX - touchX;
+        var dy = e.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) manualNext(); else manualPrev();
+        }
+        start();
+      }, { passive: true });
+
       window.addEventListener('resize', function () {
         stop();
-        measure();
-        jumpTo(0);
+        goTo(0, false);
         start();
       });
 
-      controllers.push({
-        measure: measure,
-        start: start,
-        reset: function () {
-          stop();
-          measure();
-          jumpTo(0);
-        }
-      });
+      controllers.push({ start: start, stop: stop, goTo: goTo });
     });
 
-    controllers.forEach(function (c) { c.reset(); });
+    function resetAll() {
+      controllers.forEach(function (c) { c.goTo(0, false); });
+    }
+
+    resetAll();
     requestAnimationFrame(function () {
+      resetAll();
       controllers.forEach(function (c) { c.start(); });
     });
+    window.addEventListener('load', resetAll);
   })();
 </script>
 
