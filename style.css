@@ -942,6 +942,8 @@ html.js .reveal.in {
   background:
     radial-gradient(circle at 50% 40%, rgba(201, 162, 39, .25), transparent 55%),
     linear-gradient(135deg, #1c3a5e, #0b1b2b);
+  background-size: cover;
+  background-position: center;
 }
 
 .video-embed .video-lazy .play {
