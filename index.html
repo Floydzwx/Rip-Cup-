@@ -1,1170 +1,983 @@
-/* ===== 基础重置 ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --navy: #0b1b2b;
-  --navy-2: #1c3a5e;
-  --gold: #c9a227;
-  --gold-2: #ffd54a;
-  --ink: #1a1a1a;
-  --muted: #6b7684;
-  --line: #e6e9ef;
-  --ease: cubic-bezier(.4, 0, .2, 1);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-  color: var(--ink);
-  background: #ffffff;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* 平滑滚动 + 减弱动画（尊重系统偏好） */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
-  html { scroll-behavior: auto; }
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* ===== 顶部导航 ===== */
-.site-header {
-  background: rgba(11, 27, 43, .92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(201, 162, 39, .25);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  transition: box-shadow .3s var(--ease);
-}
-
-.site-header.scrolled {
-  box-shadow: 0 8px 30px rgba(11, 27, 43, .35);
-}
-
-.nav-wrap {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.logo {
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-
-.logo span {
-  font-size: 12px;
-  font-weight: 400;
-  color: #c9a227;
-  margin-left: 6px;
-  letter-spacing: 2px;
-}
-
-.main-nav {
-  display: flex;
-  gap: 28px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.main-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.main-nav a {
-  color: #cfd8e3;
-  font-size: 15px;
-  padding: 4px 0;
-  border-bottom: 2px solid transparent;
-  transition: color .2s, border-color .2s;
-  white-space: nowrap;
-}
-
-.main-nav a:hover,
-.main-nav a.active {
-  color: #fff;
-  border-bottom-color: #c9a227;
-}
-
-.main-nav a.active {
-  color: #ffd54a;
-}
-
-/* ===== 大横幅 ===== */
-.hero {
-  position: relative;
-  background-color: #0b1b2b;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                    url("images/hero.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  padding: 120px 24px;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* 横幅金色流光扫过 */
-.hero::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 60%;
-  height: 200%;
-  background: linear-gradient(105deg, transparent, rgba(201, 162, 39, .18), transparent);
-  transform: rotate(15deg);
-  animation: shine 5.5s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes shine {
-  0%   { left: -60%; }
-  60%, 100% { left: 130%; }
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* hero 文字入场动画仅在 JS 可用时启用，保证内容永远可见 */
-html.js .hero-kicker {
-  opacity: 0;
-  animation: rise .7s cubic-bezier(.4, 0, .2, 1) forwards;
-}
-
-html.js .hero h1 {
-  opacity: 0;
-  animation: rise .7s .15s cubic-bezier(.4, 0, .2, 1) forwards;
-}
-
-html.js .hero-sub {
-  opacity: 0;
-  animation: rise .7s .3s cubic-bezier(.4, 0, .2, 1) forwards;
-}
-
-.hero-kicker {
-  color: #c9a227;
-  letter-spacing: 4px;
-  font-size: 14px;
-  margin-bottom: 12px;
-}
-
-.hero h1 {
-  font-size: 46px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-  line-height: 1.2;
-}
-
-.hero-sub {
-  margin-top: 14px;
-  color: #e3e9f0;
-  font-size: 16px;
-}
-
-@keyframes rise {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== 通用 section ===== */
-.section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 64px 24px;
-}
-
-.section-dark {
-  max-width: none;
-  background: #f5f7fa;
-  padding: 0;
-}
-
-.section-gold {
-  max-width: none;
-  background: #fbf7ec;
-  padding: 0;
-}
-
-.section-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 64px 24px;
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.section-head h2 {
-  font-size: 26px;
-  font-weight: 700;
-  white-space: nowrap;
-  position: relative;
-  padding-bottom: 6px;
-}
-
-/* 标题下方金色渐变下划线 */
-.section-head h2::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 3px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #c9a227, #ffd54a);
-  transform: scaleX(.35);
-  transform-origin: left;
-  transition: transform .45s var(--ease);
-}
-
-.section-head h2:hover::after {
-  transform: scaleX(1);
-}
-
-.section-head .line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, #e2e6ec, transparent);
-}
-
-/* 卡片入场动画（配合 IntersectionObserver；仅在 JS 可用时才初始隐藏） */
-html.js .reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity .6s cubic-bezier(.4, 0, .2, 1), transform .6s cubic-bezier(.4, 0, .2, 1);
-}
-
-html.js .reveal.in {
-  opacity: 1;
-  transform: none;
-}
-
-/* ===== 十六强树状对战图 ===== */
-.bracket {
-  margin-bottom: 40px;
-}
-
-.bracket-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.bracket-title h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #0b1b2b;
-}
-
-.bracket-legend {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: #6b7684;
-}
-
-.seed-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ffd54a, #c9a227);
-  box-shadow: 0 0 0 2px rgba(201, 162, 39, .25);
-}
-
-/* 横向五列布局 */
-.bracket-wrap {
-  display: flex;
-  gap: 20px;
-  align-items: stretch;
-  overflow-x: auto;
-  padding: 8px 4px 20px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.bracket-wrap::-webkit-scrollbar {
-  height: 8px;
-}
-
-.bracket-wrap::-webkit-scrollbar-thumb {
-  background: #d3d9e2;
-  border-radius: 4px;
-}
-
-.bracket-round {
-  flex: 1 0 170px;
-  display: flex;
-  flex-direction: column;
-  min-width: 170px;
-}
-
-.bracket-round-label {
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
-  color: #c9a227;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  white-space: nowrap;
-}
-
-.bracket-matches {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  gap: 16px;
-  flex: 1;
-}
-
-.bracket-match {
-  position: relative;
-  background: #fff;
-  border: 1px solid #e6e9ef;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: box-shadow .2s, transform .2s;
-}
-
-.bracket-match:hover {
-  box-shadow: 0 8px 20px rgba(11, 27, 43, .12);
-  transform: translateY(-2px);
-}
-
-/* 冠军对决特殊样式 */
-.bracket-match.champion-match {
-  border-color: #c9a227;
-  box-shadow: 0 0 0 1px rgba(201, 162, 39, .4);
-}
-
-.bracket-team {
-  padding: 9px 12px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #1a1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  position: relative;
-}
-
-.bracket-team + .bracket-team {
-  border-top: 1px solid #eef1f5;
-}
-
-/* 胜者高亮 */
-.bracket-team.win {
-  color: #0b1b2b;
-  font-weight: 700;
-}
-
-.bracket-team.win::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: #c9a227;
-}
-
-/* 种子选手 */
-.bracket-team.seed {
-  background: linear-gradient(90deg, rgba(201, 162, 39, .12), transparent);
-}
-
-.seed-tag {
-  font-size: 11px;
-  font-weight: 600;
-  color: #b8860b;
-  background: rgba(201, 162, 39, .15);
-  border: 1px solid rgba(201, 162, 39, .4);
-  border-radius: 4px;
-  padding: 1px 6px;
-  white-space: nowrap;
-}
-
-.bracket-score {
-  text-align: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: #6b7684;
-  padding: 6px;
-  background: #f5f7fa;
-  border-top: 1px solid #eef1f5;
-  font-variant-numeric: tabular-nums;
-}
-
-/* 冠军展示 */
-.bracket-champion {
-  margin-top: 8px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(135deg, #fffdf5, #fdf6e0);
-  border: 2px solid #c9a227;
-  border-radius: 12px;
-  padding: 20px 14px;
-  box-shadow: 0 8px 24px rgba(201, 162, 39, .3);
-}
-
-.bracket-champion-crown {
-  font-size: 36px;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.bracket-champion-name {
-  font-size: 22px;
-  font-weight: 800;
-  color: #b8860b;
-}
-
-.bracket-champion-sub {
-  font-size: 13px;
-  color: #6b7684;
-  margin-top: 4px;
-}
-
-/* ===== 比赛列表 ===== */
-.match-list {
-  background: #fff;
-  border: 1px solid #e6e9ef;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* 比赛分析（比赛栏子区块，位于树状图与赛程列表之间） */
-.analysis-block {
-  margin: 40px 0;
-}
-
-.match-row {
-  display: grid;
-  grid-template-columns: 100px 1fr 100px 100px;
-  align-items: center;
-  padding: 18px 24px;
-  border-bottom: 1px solid #eef1f5;
-  font-size: 15px;
-  transition: background .15s, box-shadow .15s;
-}
-
-.match-row:hover {
-  background: #fafbfd;
-}
-
-.match-row:last-child {
-  border-bottom: none;
-}
-
-/* 焦点战：决赛高亮 */
-.match-row.final {
-  background: linear-gradient(90deg, rgba(201, 162, 39, .10), rgba(201, 162, 39, .03));
-  border-left: 3px solid #c9a227;
-}
-
-.match-row.final .match-round {
-  color: #b8860b;
-  font-weight: 700;
-}
-
-.match-row.final .match-teams {
-  color: #0b1b2b;
-}
-
-.match-round {
-  color: #6b7684;
-  font-size: 13px;
-}
-
-.match-teams {
-  font-weight: 600;
-}
-
-.match-score {
-  text-align: center;
-  font-weight: 700;
-  color: #0b1b2b;
-  font-variant-numeric: tabular-nums;
-}
-
-.match-score .win {
-  color: #c9a227;
-}
-
-.match-status {
-  text-align: right;
-  font-size: 13px;
-}
-
-.match-status.done {
-  color: #6b7684;
-}
-
-.match-status.done::before {
-  content: "● ";
-  color: #34c759;
-  font-size: 9px;
-  vertical-align: 1px;
-}
-
-.match-status.next {
-  color: #c9a227;
-  font-weight: 600;
-}
-
-/* ===== 选手 ===== */
-.player-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.player-card {
-  text-align: center;
-  padding: 24px 12px;
-  border: 1px solid #e6e9ef;
-  border-radius: 12px;
-  transition: box-shadow .25s var(--ease), transform .25s var(--ease), border-color .25s var(--ease);
-  background: #fff;
-  position: relative;
-  overflow: hidden;
-}
-
-.player-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(201, 162, 39, .10), transparent 60%);
-  opacity: 0;
-  transition: opacity .25s var(--ease);
-  pointer-events: none;
-}
-
-.player-card:hover {
-  box-shadow: 0 12px 32px rgba(11, 27, 43, .12);
-  transform: translateY(-4px);
-  border-color: rgba(201, 162, 39, .5);
-}
-
-.player-card:hover::after {
-  opacity: 1;
-}
-
-.avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  margin: 0 auto 14px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #1c3a5e, #0b1b2b);
-  box-shadow: 0 0 0 3px #fff, 0 0 0 5px rgba(201, 162, 39, .4);
-  transition: box-shadow .25s var(--ease), transform .25s var(--ease);
-}
-
-.player-card:hover .avatar {
-  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #c9a227;
-  transform: scale(1.05);
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.player-card h3 {
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-
-.player-card p {
-  font-size: 13px;
-  color: #6b7684;
-}
-
-/* ===== 优秀选手 ===== */
-.honor-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  align-items: start;
-}
-
-.honor-col {
-  min-width: 0;
-}
-
-.honor-title {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  color: #0b1b2b;
-  text-align: center;
-}
-
-/* ===== 冠军卡：上文字、下图片，文字居中，高度对齐旁边 ===== */
-.champion-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 14px;
-  aspect-ratio: 3 / 4;          /* 与旁边卡片同比例，总高一致，底部对齐 */
-  background: linear-gradient(135deg, #fffdf5 0%, #ffffff 45%, #fdf6e0 100%);
-  border: 3px solid #c9a227;
-  border-radius: 12px;
-  padding: 20px;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(201, 162, 39, .55),
-    0 10px 30px rgba(201, 162, 39, .35),
-    inset 0 0 24px rgba(201, 162, 39, .18);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.champion-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 0 0 1px rgba(201, 162, 39, .8),
-    0 16px 40px rgba(201, 162, 39, .5),
-    inset 0 0 28px rgba(201, 162, 39, .25);
-}
-
-/* 金色光泽纹理 */
-.champion-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(rgba(201, 162, 39, .14) 1px, transparent 1px),
-    linear-gradient(120deg, rgba(255, 255, 255, .5) 0%, rgba(255, 255, 255, 0) 40%);
-  background-size: 14px 14px, 100% 100%;
-  pointer-events: none;
-}
-
-/* 右上角“冠军”金色缎带 */
-.champion-card::after {
-  content: "冠军";
-  position: absolute;
-  top: 22px;
-  right: -38px;
-  transform: rotate(45deg);
-  background: linear-gradient(135deg, #ffe27a, #c9a227 55%, #8a6d14);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  padding: 7px 46px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, .3);
-  z-index: 2;
-}
-
-/* 上：文字区，居中 */
-.champion-info {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 6px 0 2px;
-  min-width: 0;
-  flex: 0 0 auto;
-}
-
-.champion-year {
-  color: #c9a227;
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  font-weight: 700;
-}
-
-.champion-name {
-  font-size: 30px;
-  line-height: 1.15;
-  margin-bottom: 6px;
-  font-weight: 800;
-  color: #b8860b;
-  text-shadow: 0 1px 0 #fff, 0 2px 6px rgba(201, 162, 39, .35);
-}
-
-.champion-title {
-  color: #6b7684;
-  font-size: 14px;
-}
-
-/* 下：图片区，自动填满剩余高度 */
-.champion-photo {
-  position: relative;
-  width: 100%;
-  flex: 1 1 auto;              /* 吃掉文字区之外的剩余高度，底部不留白 */
-  min-height: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #c9a227, #8a6d14);
-  box-shadow: inset 0 0 0 2px rgba(201, 162, 39, .6);
-}
-
-.champion-photo img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* ===== 排行榜 / 摄影师 / 裁判 ===== */
-.honor-carousel {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #e6e9ef;
-  border-radius: 8px;
-  background: #fff;
-}
-
-.honor-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  width: 34px;
-  height: 34px;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, .38);
-  color: #fff;
-  font-size: 20px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity .2s, background .2s;
-}
-
-.honor-carousel:hover .honor-nav {
-  opacity: 1;
-}
-
-.honor-nav:hover {
-  background: rgba(0, 0, 0, .6);
-}
-
-.honor-nav.prev {
-  left: 10px;
-}
-
-.honor-nav.next {
-  right: 10px;
-}
-
-.honor-track {
-  display: flex;
-  width: 100%;
-  will-change: transform;
-}
-
-.honor-card {
-  position: relative;
-  flex: 0 0 100%;
-  box-sizing: border-box;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background: #0b1b2b;
-}
-
-.honor-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.honor-meta {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 10px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #fff;
-  background: linear-gradient(to top, rgba(0, 0, 0, .8), rgba(0, 0, 0, 0));
-}
-
-.honor-flag {
-  width: 22px;
-  height: 15px;
-  flex-shrink: 0;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, .25);
-}
-
-.honor-rank {
-  font-size: 14px;
-  font-weight: 700;
-  color: #ffd54a;
-  letter-spacing: .5px;
-}
-
-.honor-name {
-  font-size: 14px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ===== 视频 ===== */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.video-card {
-  display: block;
-  color: inherit;
-}
-
-.video-card h3 {
-  font-size: 16px;
-  margin-top: 12px;
-}
-
-.video-card p {
-  font-size: 13px;
-  color: #6b7684;
-}
-
-.video-embed {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #0b1b2b;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-}
-
-.video-card:hover .video-embed {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 34px rgba(11, 27, 43, .18);
-}
-
-.video-embed iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-/* 本地视频（比赛分析栏目） */
-.video-embed .video-local {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: #0b1b2b;
-}
-
-/* 视频封面占位（懒加载：点击后才替换 iframe） */
-.video-embed .video-lazy {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  cursor: pointer;
-  color: #fff;
-  background:
-    radial-gradient(circle at 50% 40%, rgba(201, 162, 39, .25), transparent 55%),
-    linear-gradient(135deg, #1c3a5e, #0b1b2b);
-  background-size: cover;
-  background-position: center;
-}
-
-.video-embed .video-lazy .play {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(201, 162, 39, .92);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
-  transition: transform .25s var(--ease), background .25s var(--ease);
-}
-
-.video-embed .video-lazy:hover .play {
-  transform: scale(1.1);
-  background: #ffd54a;
-}
-
-.video-embed .video-lazy .play svg {
-  width: 26px;
-  height: 26px;
-  margin-left: 4px;
-}
-
-.video-embed .video-lazy .hint {
-  font-size: 13px;
-  color: #cfd8e3;
-  letter-spacing: 1px;
-}
-
-/* ===== 捐赠 ===== */
-.donate-box {
-  background: #fff;
-  border: 1px solid #e6e9ef;
-  border-radius: 8px;
-  padding: 60px 36px;
-  text-align: center;
-}
-
-.donate-box p {
-  color: #6b7684;
-  margin-bottom: 20px;
-}
-
-.donate-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, #ffd54a, #c9a227);
-  color: #fff;
-  padding: 12px 36px;
-  border-radius: 6px;
-  font-weight: 600;
-  box-shadow: 0 6px 18px rgba(201, 162, 39, .35);
-  transition: background .2s, transform .15s, box-shadow .2s;
-}
-
-.donate-btn:hover {
-  background: linear-gradient(135deg, #c9a227, #a98a1c);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(201, 162, 39, .5);
-}
-
-/* ===== 页脚 ===== */
-.site-footer {
-  background: #0b1b2b;
-  color: #8a99ab;
-  text-align: center;
-  padding: 28px 24px;
-  font-size: 13px;
-}
-
-/* ===== 锚点跳转留出导航高度 ===== */
-#replays,
-#matches,
-#players,
-#past,
-#donate {
-  scroll-margin-top: 70px;
-}
-
-/* ===== 响应式：平板 ===== */
-@media (max-width: 1100px) {
-  .honor-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .champion-name {
-    font-size: 26px;
-  }
-}
-
-@media (max-width: 860px) {
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
-  .player-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .hero {
-    padding: 90px 20px;
-  }
-  .hero h1 {
-    font-size: 34px;
-  }
-  .hero-sub {
-    font-size: 15px;
-  }
-  .section,
-  .section-inner {
-    padding: 48px 20px;
-  }
-  .section-head h2 {
-    font-size: 22px;
-  }
-  .match-row {
-    grid-template-columns: 84px 1fr 70px 80px;
-    font-size: 14px;
-    padding: 14px 16px;
-    gap: 8px;
-  }
-  .donate-box {
-    padding: 44px 20px;
-  }
-}
-
-/* ===== 响应式：手机 ===== */
-@media (max-width: 560px) {
-  .nav-wrap {
-    height: 56px;
-    padding: 0 16px;
-    gap: 10px;
-  }
-  .logo {
-    font-size: 17px;
-  }
-  .logo span {
-    display: none;
-  }
-  .main-nav {
-    gap: 18px;
-  }
-  .main-nav a {
-    font-size: 14px;
-  }
-
-  .hero {
-    padding: 70px 16px;
-  }
-  .hero h1 {
-    font-size: 28px;
-  }
-  .hero-kicker {
-    font-size: 12px;
-    letter-spacing: 3px;
-  }
-  .hero-sub {
-    font-size: 14px;
-  }
-
-  .section,
-  .section-inner {
-    padding: 40px 16px;
-  }
-  .section-head {
-    margin-bottom: 22px;
-    gap: 12px;
-  }
-  .section-head h2 {
-    font-size: 20px;
-  }
-
-  .bracket-title h3 {
-    font-size: 16px;
-  }
-  .bracket-round {
-    flex: 1 0 150px;
-    min-width: 150px;
-  }
-  .bracket-team {
-    font-size: 13px;
-    padding: 8px 10px;
-  }
-
-  .match-row {
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "round  status"
-      "teams  score";
-    row-gap: 6px;
-    padding: 14px 14px;
-    font-size: 14px;
-  }
-  .match-round  { grid-area: round; }
-  .match-teams  { grid-area: teams; font-size: 15px; }
-  .match-score  { grid-area: score; text-align: right; font-size: 16px; }
-  .match-status { grid-area: status; }
-
-  .player-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-  .player-card {
-    padding: 18px 8px;
-  }
-  .avatar {
-    width: 72px;
-    height: 72px;
-  }
-
-  .honor-row {
-    grid-template-columns: 1fr;
-  }
-
-  .champion-name {
-    font-size: 24px;
-  }
-
-  .donate-box {
-    padding: 36px 16px;
-  }
-  .donate-btn {
-    padding: 11px 28px;
-    font-size: 15px;
-  }
-}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="撕界杯 Rip Cup · 朋友之间的撕名牌大赛官方资讯站，含精彩回放、比赛对阵、四强榜单与历届回顾。">
+<title>撕界杯 Rip Cup</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<header class="site-header">
+  <div class="nav-wrap">
+    <div class="logo">撕界杯 <span>RIP CUP</span></div>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#replays">精彩回放</a>
+      <a href="#matches">比赛</a>
+      <a href="#players">选手</a>
+      <a href="#past">历届</a>
+      <a href="#donate">捐赠</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 大横幅 -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-kicker">The 2nd Annual Rip Cup</p>
+    <h1>第二届撕界杯</h1>
+    <p class="hero-sub">撕名牌大赛 · 官方资讯站</p>
+  </div>
+</section>
+
+<!-- 精彩回放 -->
+<section id="replays" class="section">
+  <div class="section-head">
+    <h2>精彩回放</h2>
+    <span class="line"></span>
+  </div>
+  <div class="video-grid">
+    <div class="video-card reveal">
+      <div class="video-embed">
+        <div class="video-lazy" style="background-image:url(images/replay-final.jpg)" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117329866263259&bvid=BV1siau6HEdG&cid=42183034042&p=1&danmaku=0&autoplay=1" data-title="第二届撕界杯第一轮决赛" role="button" tabindex="0" aria-label="播放：第二届撕界杯第一轮决赛">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
+      </div>
+      <h3>第二届撕界杯第一轮决赛</h3>
+      <p>第二届撕界杯决赛精彩回放</p>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-embed">
+        <div class="video-lazy" style="background-image:url(images/replay-view2.jpg)" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117329748889066&bvid=BV1Utau6oEB3&cid=42182968061&p=1&danmaku=0&autoplay=1" data-title="第二届撕界杯第一轮决赛 视角Ⅱ" role="button" tabindex="0" aria-label="播放：第二届撕界杯第一轮决赛 视角Ⅱ">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
+      </div>
+      <h3>第二届撕界杯第一轮决赛 视角Ⅱ</h3>
+      <p>第二届撕界杯正式开赛，究竟鹿死谁手</p>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-embed">
+        <div class="video-lazy" style="background-image:url(images/replay-bts.jpg)" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117329413343625&bvid=BV1efau6iEvE&cid=42181133022&p=1&danmaku=0&autoplay=1" data-title="第二届撕界杯幕后花絮" role="button" tabindex="0" aria-label="播放：第二届撕界杯幕后花絮">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
+      </div>
+      <h3>第二届撕界杯幕后花絮</h3>
+      <p>全场最佳后勤</p>
+    </div>
+  </div>
+</section>
+
+<!-- 比赛 -->
+<section id="matches" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>比赛</h2>
+      <span class="line"></span>
+    </div>
+
+    <!-- 十六强树状对战图 -->
+    <div class="bracket reveal">
+      <div class="bracket-title">
+        <h3>十六强淘汰赛对阵</h3>
+        <span class="bracket-legend"><i class="seed-dot"></i>种子选手直进八强</span>
+      </div>
+
+      <div class="bracket-wrap">
+
+        <!-- 资格赛（十二进八）：8 人争 4 个八强席位 -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">资格赛 · 12进8</div>
+          <div class="bracket-matches">
+            <div class="bracket-match">
+              <div class="bracket-team win">谢沛尧</div>
+              <div class="bracket-team">董浩林</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team">陈律行</div>
+              <div class="bracket-team win">王智宸</div>
+              <div class="bracket-score">0 : 1</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team win">洪昊阳</div>
+              <div class="bracket-team">毕文豪</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team">万雪麟</div>
+              <div class="bracket-team win">周行健</div>
+              <div class="bracket-score">0 : 1</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1/4 决赛（八进四）：4 种子 + 4 资格赛胜者 -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">1/4决赛 · 8进4</div>
+          <div class="bracket-matches">
+            <div class="bracket-match">
+              <div class="bracket-team seed win">陆骁睿 <span class="seed-tag">种子</span></div>
+              <div class="bracket-team">谢沛尧</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team seed win">程孝 <span class="seed-tag">种子</span></div>
+              <div class="bracket-team">王智宸</div>
+              <div class="bracket-score">1.5 : 0.5</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team seed win">龚雨晨 <span class="seed-tag">种子</span></div>
+              <div class="bracket-team">洪昊阳</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team seed">胡晨翔 <span class="seed-tag">种子</span></div>
+              <div class="bracket-team win">周行健</div>
+              <div class="bracket-score">0 : 1</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 半决赛（四进二） -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">半决赛 · 4进2</div>
+          <div class="bracket-matches">
+            <div class="bracket-match">
+              <div class="bracket-team win">陆骁睿</div>
+              <div class="bracket-team">程孝</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+            <div class="bracket-match">
+              <div class="bracket-team win">龚雨晨</div>
+              <div class="bracket-team">周行健</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 决赛 -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">决赛</div>
+          <div class="bracket-matches">
+            <div class="bracket-match champion-match">
+              <div class="bracket-team win">陆骁睿</div>
+              <div class="bracket-team">龚雨晨</div>
+              <div class="bracket-score">1 : 0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 冠军 -->
+        <div class="bracket-round">
+          <div class="bracket-round-label">冠军</div>
+          <div class="bracket-champion">
+            <div class="bracket-champion-crown">🏆</div>
+            <div class="bracket-champion-name">陆骁睿</div>
+            <div class="bracket-champion-sub">卫冕冠军</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 比赛分析（位于树状图与赛程列表之间） -->
+    <div class="analysis-block">
+      <div class="section-head">
+        <h2>比赛分析</h2>
+        <span class="line"></span>
+      </div>
+      <div class="video-grid">
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <div class="video-lazy" style="background-image:url(images/anasis1.png)" data-local-src="movies/final.mp4" data-title="决赛" role="button" tabindex="0" aria-label="播放：决赛">
+              <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="hint">点击播放</span>
+            </div>
+          </div>
+          <h3>决赛</h3>
+          <p>陆骁睿 VS 龚雨晨</p>
+        </div>
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <div class="video-lazy" style="background-image:url(images/anasis2.png)" data-local-src="movies/semifinal1.mp4" data-title="半决赛" role="button" tabindex="0" aria-label="播放：半决赛">
+              <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="hint">点击播放</span>
+            </div>
+          </div>
+          <h3>半决赛</h3>
+          <p>陆骁睿 VS 程孝</p>
+        </div>
+        <div class="video-card reveal">
+          <div class="video-embed">
+            <div class="video-lazy" style="background-image:url(images/anasis3.png)" data-local-src="movies/semifinal2.mp4" data-title="半决赛" role="button" tabindex="0" aria-label="播放：半决赛">
+              <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="hint">点击播放</span>
+            </div>
+          </div>
+          <h3>半决赛</h3>
+          <p>龚雨晨 VS 周行健</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="match-list reveal">
+
+      <div class="match-row final">
+        <span class="match-round">决赛</span>
+        <span class="match-teams">陆骁睿 VS 龚雨晨</span>
+        <span class="match-score"><span class="win">1</span> : 0</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">半决赛</span>
+        <span class="match-teams">陆骁睿 VS 程孝</span>
+        <span class="match-score">1 : 0</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">半决赛</span>
+        <span class="match-teams">龚雨晨 VS 周行健</span>
+        <span class="match-score">1 : 0</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">1/4决赛</span>
+        <span class="match-teams">陆骁睿 VS 谢沛尧</span>
+        <span class="match-score">1 : 0</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">1/4决赛</span>
+        <span class="match-teams">程孝 VS 王智宸</span>
+        <span class="match-score">1.5 : 0.5</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">1/4决赛</span>
+        <span class="match-teams">龚雨晨 VS 洪昊阳</span>
+        <span class="match-score">1 : 0</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">1/4决赛</span>
+        <span class="match-teams">胡晨翔 VS 周行健</span>
+        <span class="match-score">0 : 1</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">十二进八</span>
+        <span class="match-teams">谢沛尧 VS 董浩林</span>
+        <span class="match-score">1 : 0</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">十二进八</span>
+        <span class="match-teams">陈律行 VS 王智宸</span>
+        <span class="match-score">0 : 1</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">十二进八</span>
+        <span class="match-teams">洪昊阳 VS 毕文豪</span>
+        <span class="match-score">1 : 0</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+      <div class="match-row">
+        <span class="match-round">十二进八</span>
+        <span class="match-teams">万雪麟 VS 周行健</span>
+        <span class="match-score">0 : 1</span>
+        <span class="match-status done">已结束</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 四强榜单 -->
+<section id="players" class="section">
+  <div class="section-head">
+    <h2>四强榜单</h2>
+    <span class="line"></span>
+  </div>
+  <div class="player-grid">
+    <div class="player-card reveal">
+      <div class="avatar">
+        <img loading="lazy" decoding="async" src="images/champion.jpg" alt="陆骁睿"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>陆</text></svg>'">
+      </div>
+      <h3>陆骁睿</h3>
+      <p>卫冕冠军</p>
+    </div>
+    <div class="player-card reveal">
+      <div class="avatar">
+        <img loading="lazy" decoding="async" src="images/runner-up.jpg" alt="龚雨晨"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>龚</text></svg>'">
+      </div>
+      <h3>龚雨晨</h3>
+      <p>亚军</p>
+    </div>
+    <div class="player-card reveal">
+      <div class="avatar">
+        <img loading="lazy" decoding="async" src="images/semi-finalist.jpg" alt="程孝"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>程</text></svg>'">
+      </div>
+      <h3>程孝</h3>
+      <p>四强</p>
+    </div>
+    <div class="player-card reveal">
+      <div class="avatar">
+        <img loading="lazy" decoding="async" src="images/dark-horse.jpg" alt="周行健"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>周</text></svg>'">
+      </div>
+      <h3>周行健</h3>
+      <p>最佳黑马</p>
+    </div>
+  </div>
+</section>
+
+<!-- 优秀选手 -->
+<section class="section section-gold">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>优秀选手</h2>
+      <span class="line"></span>
+    </div>
+
+    <div class="honor-row">
+
+      <!-- 冠军（不滑动，上文字下图） -->
+      <div class="honor-col reveal">
+        <h3 class="honor-title">冠军</h3>
+        <div class="champion-card">
+          <div class="champion-info">
+            <p class="champion-year">第二届撕界杯</p>
+            <h2 class="champion-name">陆骁睿</h2>
+            <p class="champion-title">当届冠军</p>
+          </div>
+          <div class="champion-photo">
+            <img loading="lazy" decoding="async" src="images/champion.jpg" alt="陆骁睿"
+                 onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23c9a227%22/><text x=%2250%22 y=%2258%22 font-size=%2242%22 fill=%22%23fff%22 text-anchor=%22middle%22>陆</text></svg>'">
+          </div>
+        </div>
+      </div>
+
+      <!-- 排行榜（单卡视窗，自动向左滑，23 人） -->
+      <div class="honor-col reveal">
+        <h3 class="honor-title">排行榜</h3>
+        <div class="honor-carousel" data-carousel>
+          <button class="honor-nav prev" type="button" aria-label="上一张">&#8249;</button>
+          <button class="honor-nav next" type="button" aria-label="下一张">&#8250;</button>
+          <div class="honor-track">
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/1st.jpg" alt="陆骁睿"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>陆</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">1st</span>
+                <span class="honor-name">陆骁睿</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/2nd.jpg" alt="龚雨晨"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>龚</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">2nd</span>
+                <span class="honor-name">龚雨晨</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/3rd.jpg" alt="韩天祺"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>韩</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">3rd</span>
+                <span class="honor-name">韩天祺</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/4th.jpg" alt="王智宸"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>王</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">4th</span>
+                <span class="honor-name">王智宸</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/5th.jpg" alt="田扶"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>田</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="日本"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#bc002d"/></svg>
+                <span class="honor-rank">5th</span>
+                <span class="honor-name">田扶</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/6th.jpg" alt="谢俊晨"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>谢</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">6th</span>
+                <span class="honor-name">谢俊晨</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/7th.jpg" alt="周行健"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>周</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">7th</span>
+                <span class="honor-name">周行健</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/8th.jpg" alt="孙嘉珉"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>孙</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">8th</span>
+                <span class="honor-name">孙嘉珉</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/9th.jpg" alt="程孝"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>程</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">9th</span>
+                <span class="honor-name">程孝</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/10th.jpg" alt="胡晨翔"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>胡</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">10th</span>
+                <span class="honor-name">胡晨翔</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/11th.jpg" alt="朱晨曦"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>朱</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">11th</span>
+                <span class="honor-name">朱晨曦</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/12th.jpg" alt="谢昊东"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>谢</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">12th</span>
+                <span class="honor-name">谢昊东</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/13th.jpg" alt="万雪麟"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>万</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">13th</span>
+                <span class="honor-name">万雪麟</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/14th.jpg" alt="谢沛尧"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>谢</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">14th</span>
+                <span class="honor-name">谢沛尧</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/15th.jpg" alt="董浩林"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>董</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">15th</span>
+                <span class="honor-name">董浩林</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/16th.jpg" alt="洪昊阳"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>洪</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">16th</span>
+                <span class="honor-name">洪昊阳</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/17th.jpg" alt="陈律行"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>陈</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">17th</span>
+                <span class="honor-name">陈律行</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/18th.jpg" alt="周烨"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>周</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">18th</span>
+                <span class="honor-name">周烨</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/19th.jpg" alt="周文轩"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>周</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="美国"><rect width="30" height="20" fill="#fff"/><g fill="#b22234"><rect width="30" height="1.54" y="0"/><rect width="30" height="1.54" y="3.08"/><rect width="30" height="1.54" y="6.16"/><rect width="30" height="1.54" y="9.24"/><rect width="30" height="1.54" y="12.32"/><rect width="30" height="1.54" y="15.4"/><rect width="30" height="1.54" y="18.48"/></g><rect width="12" height="10.8" fill="#3c3b6e"/></svg>
+                <span class="honor-rank">19th</span>
+                <span class="honor-name">周文轩</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/20th.jpg" alt="徐旸"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>徐</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">20th</span>
+                <span class="honor-name">徐旸</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/21st.jpg" alt="饶顺瑆"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>饶</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">21st</span>
+                <span class="honor-name">饶顺瑆</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/22nd.jpg" alt="陈子谦"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>陈</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">22nd</span>
+                <span class="honor-name">陈子谦</span>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/23rd.jpg" alt="陈旭"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>陈</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">23rd</span>
+                <span class="honor-name">陈旭</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 摄影师（整图铺满，自动向左滑） -->
+      <div class="honor-col reveal">
+        <h3 class="honor-title">摄影师</h3>
+        <div class="honor-carousel" data-carousel>
+          <button class="honor-nav prev" type="button" aria-label="上一张">&#8249;</button>
+          <button class="honor-nav next" type="button" aria-label="下一张">&#8250;</button>
+          <div class="honor-track">
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/Photographer1.jpg" alt="盛彦博"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>摄</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="苏联">
+                  <rect width="30" height="20" fill="#cc0000"/>
+                  <g fill="#ffe14d">
+                    <path d="M15.5 4.2 C11.2 4.6 8.2 8 8.4 11.8 C8.6 15 11 17.4 14.4 17.6 L14.6 15.8 C12 15.6 10.4 13.9 10.3 11.8 C10.1 9 12.4 6.4 15.6 6.1 Z"/>
+                    <rect x="6.2" y="15" width="6.4" height="1.9" rx="0.9" transform="rotate(38 9.4 15.9)"/>
+                    <rect x="8.6" y="9.4" width="11" height="2" rx="0.9" transform="rotate(38 14.1 10.4)"/>
+                    <rect x="7.4" y="6.2" width="4.4" height="3.1" rx="0.5" transform="rotate(38 9.6 7.75)"/>
+                  </g>
+                </svg>
+                <span class="honor-name">盛彦博</span>
+              </div>
+            </div>
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/Photographer2.jpg" alt="崔可豪"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>摄</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-name">崔可豪</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 裁判（整图铺满，自动向左滑） -->
+      <div class="honor-col reveal">
+        <h3 class="honor-title">裁判</h3>
+        <div class="honor-carousel" data-carousel>
+          <button class="honor-nav prev" type="button" aria-label="上一张">&#8249;</button>
+          <button class="honor-nav next" type="button" aria-label="下一张">&#8250;</button>
+          <div class="honor-track">
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/referee1.jpg" alt="施子言"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>裁</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="中国"><rect width="30" height="20" fill="#de2910"/><polygon points="5,3 5.9,5.4 3.3,3.9 6.7,3.9 4.1,5.4" fill="#ffde00"/></svg>
+                <span class="honor-rank">主裁判</span>
+                <span class="honor-name">施子言</span>
+              </div>
+            </div>
+            <div class="honor-card">
+              <img loading="lazy" decoding="async" class="honor-photo" src="images/referee2.jpg" alt="周文轩"
+                   onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 130%22><rect width=%22100%22 height=%22130%22 fill=%22%231c3a5e%22/><text x=%2250%22 y=%2275%22 font-size=%2242%22 fill=%22%23c9a227%22 text-anchor=%22middle%22>裁</text></svg>'">
+              <div class="honor-meta">
+                <svg class="honor-flag" viewBox="0 0 30 20" aria-label="美国"><rect width="30" height="20" fill="#fff"/><g fill="#b22234"><rect width="30" height="1.54" y="0"/><rect width="30" height="1.54" y="3.08"/><rect width="30" height="1.54" y="6.16"/><rect width="30" height="1.54" y="9.24"/><rect width="30" height="1.54" y="12.32"/><rect width="30" height="1.54" y="15.4"/><rect width="30" height="1.54" y="18.48"/></g><rect width="12" height="10.8" fill="#3c3b6e"/></svg>
+                <span class="honor-rank">副裁判</span>
+                <span class="honor-name">周文轩</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 历届回顾 -->
+<section id="past" class="section">
+  <div class="section-head">
+    <h2>历届回顾</h2>
+    <span class="line"></span>
+  </div>
+  <div class="video-grid">
+    <div class="video-card reveal">
+      <div class="video-embed">
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117190850317804&bvid=BV1exta6XEcD&cid=41470528608&p=1&danmaku=0&autoplay=1" data-title="第一届撕界杯团战" role="button" tabindex="0" aria-label="播放：第一届撕界杯团战">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
+      </div>
+      <h3>第一届撕界杯团战</h3>
+      <p>5V5综合评价</p>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-embed">
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117184474909332&bvid=BV15KtH6dENN&cid=41432714870&p=1&danmaku=0&autoplay=1" data-title="第一届决赛集锦" role="button" tabindex="0" aria-label="播放：第一届决赛集锦">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
+      </div>
+      <h3>第一届决赛集锦</h3>
+      <p>首届决赛精彩时刻</p>
+    </div>
+    <div class="video-card reveal">
+      <div class="video-embed">
+        <div class="video-lazy" data-src="https://player.bilibili.com/player.html?isOutside=true&aid=117184542084011&bvid=BV1qctH6FEhq&cid=41433237000&p=1&danmaku=0&autoplay=1" data-title="第一届撕界杯第三轮" role="button" tabindex="0" aria-label="播放：第一届撕界杯第三轮">
+          <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="hint">点击播放</span>
+        </div>
+      </div>
+      <h3>第一届撕界杯第三轮</h3>
+      <p>3V4混战</p>
+    </div>
+  </div>
+</section>
+
+<!-- 捐赠 -->
+<section id="donate" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>捐赠</h2>
+      <span class="line"></span>
+    </div>
+    <div class="donate-box reveal">
+      <p>撕界杯纯属朋友之间娱乐，你的支持会让下一届更精彩。</p>
+      <a href="https://space.bilibili.com/3546856434960768?spm_id_from=333.1387.0.0"
+         target="_blank" rel="noopener" class="donate-btn">支持我们</a>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="site-footer">
+  <p>© 2026 撕界杯 Rip Cup · 朋友之间的小比赛</p>
+</footer>
+
+<script>
+  /* ===== 导航：滚动高亮 + 顶栏阴影 ===== */
+  (function () {
+    var header = document.querySelector('.site-header');
+    var links = document.querySelectorAll('.main-nav a');
+    var sections = [];
+    links.forEach(function (a) {
+      var el = document.querySelector(a.getAttribute('href'));
+      if (el) sections.push(el);
+    });
+
+    function onScroll() {
+      if (header) header.classList.toggle('scrolled', window.scrollY > 10);
+      updateActive();
+    }
+
+    function updateActive() {
+      if (!sections.length) return;
+      var current = sections[0];
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top <= 200) {
+          current = sections[i];
+        }
+      }
+      links.forEach(function (a) {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateActive);
+    onScroll();
+  })();
+
+  /* ===== 卡片入场动画（IntersectionObserver）===== */
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  /* ===== 视频懒加载：点击后才加载 ===== */
+  (function () {
+    var lazies = document.querySelectorAll('.video-lazy');
+    function activate(el) {
+      var parent = el.parentNode;
+      var title = el.getAttribute('data-title') || '';
+
+      // 本地视频：创建 video 并自动播放
+      var localSrc = el.getAttribute('data-local-src');
+      if (localSrc) {
+        var video = document.createElement('video');
+        video.src = localSrc;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.className = 'video-local';
+        video.title = title;
+        parent.replaceChild(video, el);
+        var p = video.play();
+        if (p && p.catch) { p.catch(function () {}); }
+        return;
+      }
+
+      // B 站视频：创建 iframe
+      var src = el.getAttribute('data-src');
+      if (!src) return;
+      var iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.allowFullscreen = true;
+      iframe.title = title;
+      iframe.setAttribute('allow', 'fullscreen');
+      parent.replaceChild(iframe, el);
+    }
+    lazies.forEach(function (el) {
+      function onClick() { activate(el); }
+      el.addEventListener('click', onClick);
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(el); }
+      });
+    });
+  })();
+
+  /* 排行榜 / 摄影师 / 裁判：单卡视窗，自动向左滑，各自独立计时，同时启动
+     支持左右按钮：上一张 / 下一张（循环）。
+     使用百分比平移（translateX -100% = 一张卡宽），零亚像素误差。 */
+  (function () {
+    var INTERVAL = 2500;
+    var DURATION = 600;
+
+    var carousels = document.querySelectorAll('[data-carousel]');
+    var controllers = [];
+
+    carousels.forEach(function (carousel) {
+      var track = carousel.querySelector('.honor-track');
+      var prevBtn = carousel.querySelector('.honor-nav.prev');
+      var nextBtn = carousel.querySelector('.honor-nav.next');
+      if (!track) return;
+
+      var originalCards = Array.prototype.slice.call(track.children);
+      if (originalCards.length < 2) return;
+
+      // 克隆一份，实现无缝循环
+      originalCards.forEach(function (card) {
+        track.appendChild(card.cloneNode(true));
+      });
+
+      var originalCount = originalCards.length;
+      var index = 0;
+      var timer = null;
+      var animating = false;
+
+      function goTo(i, animate) {
+        index = i;
+        if (animate) {
+          track.style.transition = 'transform ' + (DURATION / 1000) + 's ease';
+        } else {
+          track.style.transition = 'none';
+        }
+        // 用百分比平移：-100% 精确等于一张卡片宽度（卡片 flex-basis 100% = track 宽度），
+        // 彻底消除像素测量的亚像素累积误差
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      }
+
+      function autoNext() {
+        if (animating) return;
+        animating = true;
+        goTo(index + 1, true);
+        setTimeout(function () {
+          if (index >= originalCount) {
+            goTo(0, false);
+          }
+          animating = false;
+        }, DURATION + 30);
+      }
+
+      function manualNext() {
+        if (animating) return;
+        animating = true;
+        goTo(index + 1, true);
+        setTimeout(function () {
+          if (index >= originalCount) {
+            goTo(0, false);
+          }
+          animating = false;
+        }, DURATION + 30);
+      }
+
+      function manualPrev() {
+        if (animating) return;
+        animating = true;
+        if (index === 0) {
+          goTo(originalCount, false);
+          void track.offsetWidth;
+          goTo(originalCount - 1, true);
+        } else {
+          goTo(index - 1, true);
+        }
+        setTimeout(function () { animating = false; }, DURATION + 30);
+      }
+
+      function start() {
+        stop();
+        timer = setInterval(autoNext, INTERVAL);
+      }
+
+      function stop() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function () { manualPrev(); });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function () { manualNext(); });
+      }
+
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', start);
+
+      /* 触摸滑动支持（手机端） */
+      var touchX = 0, touchY = 0, touched = false;
+      carousel.addEventListener('touchstart', function (e) {
+        touched = true;
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+        stop();
+      }, { passive: true });
+      carousel.addEventListener('touchend', function (e) {
+        if (!touched) return;
+        touched = false;
+        var dx = e.changedTouches[0].clientX - touchX;
+        var dy = e.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) manualNext(); else manualPrev();
+        }
+        start();
+      }, { passive: true });
+
+      window.addEventListener('resize', function () {
+        stop();
+        goTo(0, false);
+        start();
+      });
+
+      controllers.push({ start: start, stop: stop, goTo: goTo });
+    });
+
+    function resetAll() {
+      controllers.forEach(function (c) { c.goTo(0, false); });
+    }
+
+    resetAll();
+    requestAnimationFrame(function () {
+      resetAll();
+      controllers.forEach(function (c) { c.start(); });
+    });
+    window.addEventListener('load', resetAll);
+  })();
+</script>
+
+</body>
+</html>
